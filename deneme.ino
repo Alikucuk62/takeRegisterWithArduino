@@ -1,4 +1,7 @@
-
+#  altdaki kod parçacığı, tanımlı parmak izi eklemek için id'si 1 olan kullanıcıya ihtiyaç duyuyor. -burada benim parmağım tanımlı- 
+#siz eklemek istiyorsanız 114.satırda ki kodu değiştirebilirsiniz.
+#  if (finger.fingerID==1) setup2();
+# Serial.print("Tanimli ID #"); Serial.println(finger.fingerID); 
 
 #include <Adafruit_Fingerprint.h>
 #include <SoftwareSerial.h>
