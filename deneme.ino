@@ -13,21 +13,17 @@ void setup() {
   
   Serial.begin(9600);
   Serial.println("Adafruit finger detect test");
-  
 
   // set the data rate for the sensor serial port
   finger.begin(57600);
   
   if (finger.verifyPassword()) {
     Serial.println("Found fingerprint sensor!");
-    
   } else {
     Serial.println("Did not find fingerprint sensor :(");
     while (1);
-    
   }
   Serial.println("Tanimli parmak bekleniyor");
-  
 }
 uint8_t readnumber(void) {
   uint8_t num = 0;
@@ -49,7 +45,7 @@ uint8_t readnumber(void) {
 void loop() {
    digitalWrite(13, LOW);
    getFingerprintIDez();
-   ;            
+  delay(50);            
 }
 
 uint8_t getFingerprintID() {
@@ -57,23 +53,18 @@ uint8_t getFingerprintID() {
   switch (p) {
     case FINGERPRINT_OK:
       Serial.println("Resim alındı");
-      
       break;
     case FINGERPRINT_NOFINGER:
       Serial.println("Parmak bulunamadi");
-      
       return p;
     case FINGERPRINT_PACKETRECIEVEERR:
       Serial.println("Communication error");
-      
       return p;
-      case FINGERPRINT_IMAGEFAIL:
+    case FINGERPRINT_IMAGEFAIL:
       Serial.println("Imaging error");
-      
       return p;
     default:
       Serial.println("Unknown error");
-      
       return p;
   }
 
@@ -83,27 +74,21 @@ uint8_t getFingerprintID() {
   switch (p) {
     case FINGERPRINT_OK:
       Serial.println("Resim donusturuldu");
-      
       break;
     case FINGERPRINT_IMAGEMESS:
       Serial.println("Image too messy");
-      
       return p;
     case FINGERPRINT_PACKETRECIEVEERR:
       Serial.println("Communication error");
-      
       return p;
     case FINGERPRINT_FEATUREFAIL:
       Serial.println("Could not find fingerprint features");
-      
       return p;
     case FINGERPRINT_INVALIDIMAGE:
       Serial.println("Could not find fingerprint features");
-      
       return p;
     default:
       Serial.println("Unknown error");
-      
       return p;
   }
   
@@ -111,18 +96,14 @@ uint8_t getFingerprintID() {
   p = finger.fingerFastSearch();
   if (p == FINGERPRINT_OK) {
     Serial.println("Found a print match!");
-    
   } else if (p == FINGERPRINT_PACKETRECIEVEERR) {
     Serial.println("Communication error");
-    
     return p;
   } else if (p == FINGERPRINT_NOTFOUND) {
     Serial.println("Did not find a match");
-    
     return p;
   } else {
     Serial.println("Unknown error");
-    
     return p;
   }   
   
@@ -186,12 +167,10 @@ void loop2()
 {
   digitalWrite(13, LOW);
   Serial.println("kaydetmek istediginiz ID'yi girin");
-  delay(100);
   id = readnumber();
   Serial.print("kaydediliyor ");
-  delay(100);
   Serial.println(id);
-  delay(100);
+  
   while (!  getFingerprintEnroll() );
 }
 
